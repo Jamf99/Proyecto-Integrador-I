@@ -19,7 +19,9 @@ namespace Workshop_Gmap
 
         private void gMapControl1_Load(object sender, EventArgs e)
         {
-
+            map.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
+            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly;
+            map.SetPositionByKeywords("Cali, Colombia");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -28,11 +30,6 @@ namespace Workshop_Gmap
         }
 
         private void Principal_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
         {
 
         }
