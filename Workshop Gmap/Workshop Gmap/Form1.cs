@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PruebaGit
+namespace Workshop_Gmap
 {
     public partial class Form1 : Form
     {

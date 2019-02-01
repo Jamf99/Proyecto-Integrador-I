@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Prueb2Git.Properties
+namespace Workshop_Gmap.Properties
 {
 
 

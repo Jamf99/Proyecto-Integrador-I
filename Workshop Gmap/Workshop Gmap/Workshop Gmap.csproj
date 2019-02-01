@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9B598620-78F3-4023-944E-E486A7FC69A9}</ProjectGuid>
+    <ProjectGuid>{4D912D62-05A9-429E-B8EF-AA81D4723ADB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Prueb2Git</RootNamespace>
-    <AssemblyName>Prueb2Git</AssemblyName>
+    <RootNamespace>Workshop_Gmap</RootNamespace>
+    <AssemblyName>Workshop Gmap</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -54,9 +54,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
