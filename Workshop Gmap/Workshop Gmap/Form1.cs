@@ -41,7 +41,7 @@ namespace Workshop_Gmap
         {
 
             try { 
-                string[] lines = File.ReadAllLines("/data/data.csv");
+                string[] lines = File.ReadAllLines("..\\..\\data.csv");
                 MessageBox.Show(lines.Length+"");
                 int count = 0;
                 foreach(var line in lines)
