@@ -90,8 +90,8 @@
             this.map.LevelsKeepInMemmory = 5;
             this.map.Location = new System.Drawing.Point(636, 91);
             this.map.MarkersEnabled = true;
-            this.map.MaxZoom = 18;
-            this.map.MinZoom = 12;
+            this.map.MaxZoom = 10;
+            this.map.MinZoom = 0;
             this.map.MouseWheelZoomEnabled = true;
             this.map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
             this.map.Name = "map";
@@ -104,7 +104,7 @@
             this.map.ShowTileGridLines = false;
             this.map.Size = new System.Drawing.Size(497, 434);
             this.map.TabIndex = 1;
-            this.map.Zoom = 12D;
+            this.map.Zoom = 6D;
             this.map.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // label1
@@ -158,7 +158,7 @@
             this.Controls.Add(this.listView1);
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Integrator Project I - Workshop";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
