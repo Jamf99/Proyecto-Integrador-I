@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace Workshop_Gmap.model
 {
-    class Statistics
+    public class Statistics
     {
+        private List<Affected> affected;
+
+        public Statistics()
+        {
+            affected = new List<Affected>();
+        }
+
+        public void addAffected(int year, string state, string gender, string ocupation, string civilStatus)
+        {
+            this.affected.Add(new Affected(year, state, gender, ocupation, civilStatus));
+        }
+
+        public List<Affected> Affected { get => affected; set => affected = value; }
+
     }
 }

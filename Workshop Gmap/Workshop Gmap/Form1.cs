@@ -9,14 +9,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Workshop_Gmap.model;
 
 namespace Workshop_Gmap
 {
     public partial class Principal : Form
     {
+
+        private Statistics model;
+
         public Principal()
         {
             InitializeComponent();
+            model = new Statistics();
             readDataBase();
         }
 
@@ -27,11 +32,6 @@ namespace Workshop_Gmap
             map.SetPositionByKeywords("Bogotá, Colombia");
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Principal_Load(object sender, EventArgs e)
         {
 
@@ -39,30 +39,70 @@ namespace Workshop_Gmap
 
         public void readDataBase()
         {
- 
-            try
-            {
-                StreamReader sr = new StreamReader("data/dataBase.csv");
-                String line = "";
-                sr.ReadLine();
-                while ((line = sr.ReadLine()) != null)
+
+            try { 
+                string[] lines = File.ReadAllLines("/data/data.csv");
+                MessageBox.Show(lines.Length+"");
+                int count = 0;
+                foreach(var line in lines)
                 {
-                    String[] dates = line.Split(new Char[] { ';' });
-                    MessageBox.Show(dates[10]);
-                    MessageBox.Show("hola");
-                    MessageBox.Show(dates[0]);
-                    MessageBox.Show(dates[14]);
-                    MessageBox.Show(dates[22]);
-                    MessageBox.Show(dates[16]);
-                }
-                sr.Close();
-                Thread.Sleep(4000);
+                    if (count != 0)
+                    {
+                        var values = line.Split(',');
+                        int year = Int32.Parse(values[10]);
+                        string gender = values[14];
+                        string ocupation = values[22];
+                        string civilStatus = values[16];
+                        string department = "";
+                        int state = Int32.Parse(values[0]);
+                        if (state == 17)
+                        {
+                            department = "Caldas";
+                        }
+                        else if (state == 76)
+                        {
+                            department = "Valle del Cauca";
+                        }
+                        else if (state == 63)
+                        {
+                            department = "Quindío";
+                        }
+                        else if (state == 66)
+                        {
+                            department = "Risaralda";
+                        }
+                        else if (state == 11)
+                        {
+                            department = "Bogotá";
+                        }
+                        else if (state == 25)
+                        {
+                            department = "Cundinamarca";
+                        }
+                        else if (state == 5)
+                        {
+                            department = "Antioquia";
+                        }
+                        else if (state == 73)
+                        {
+                            department = "Tolima";
+                        }
+                        model.addAffected(year, department, gender, ocupation, civilStatus);
+                    }
+                    count++;
+                } 
+                
             }
             
             catch (Exception e)
             {
-                Console.WriteLine("Exception: " + e.Message);
+                MessageBox.Show("Exception: " + e.Message);
             }
+        }
+
+        private void showStatistics_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(model.Affected.Count+"");
         }
     }
 }

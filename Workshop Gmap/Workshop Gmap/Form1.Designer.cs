@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.AffectedListView = new System.Windows.Forms.ListView();
             this.Year = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.State = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Gender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,20 +41,20 @@
             this.recomendations = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listView1
+            // AffectedListView
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.AffectedListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Year,
             this.State,
             this.Gender,
             this.Ocupation,
             this.CivilStatus});
-            this.listView1.Location = new System.Drawing.Point(41, 91);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(522, 434);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.AffectedListView.Location = new System.Drawing.Point(41, 91);
+            this.AffectedListView.Name = "AffectedListView";
+            this.AffectedListView.Size = new System.Drawing.Size(522, 434);
+            this.AffectedListView.TabIndex = 0;
+            this.AffectedListView.UseCompatibleStateImageBehavior = false;
+            this.AffectedListView.View = System.Windows.Forms.View.Details;
             // 
             // Year
             // 
@@ -104,7 +104,7 @@
             this.map.ShowTileGridLines = false;
             this.map.Size = new System.Drawing.Size(497, 434);
             this.map.TabIndex = 1;
-            this.map.Zoom = 6D;
+            this.map.Zoom = 5.5D;
             this.map.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // label1
@@ -114,7 +114,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 2;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -134,6 +133,7 @@
             this.showStatistics.TabIndex = 4;
             this.showStatistics.Text = "Show Statistics";
             this.showStatistics.UseVisualStyleBackColor = true;
+            this.showStatistics.Click += new System.EventHandler(this.showStatistics_Click);
             // 
             // recomendations
             // 
@@ -155,7 +155,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.map);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.AffectedListView);
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Integrator Project I - Workshop";
@@ -167,7 +167,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView AffectedListView;
         private GMap.NET.WindowsForms.GMapControl map;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
