@@ -1,10 +1,14 @@
-﻿using System;
+﻿using GMap.NET;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,13 +20,19 @@ namespace Workshop_Gmap
     public partial class Principal : Form
     {
 
+        private string direction = Environment.CurrentDirectory + @"..\\..\\saved.cfg";
+
         private Statistics model;
 
         public Principal()
         {
             InitializeComponent();
             model = new Statistics();
-            readDataBase();
+            // readDataBase();
+            // saveData();
+            read();
+            refreshToListView();
+            markMap();
         }
 
         private void gMapControl1_Load(object sender, EventArgs e)
@@ -39,10 +49,8 @@ namespace Workshop_Gmap
 
         public void readDataBase()
         {
-
             try { 
                 string[] lines = File.ReadAllLines("..\\..\\data.csv");
-                MessageBox.Show(lines.Length+"");
                 int count = 0;
                 foreach(var line in lines)
                 {
@@ -100,9 +108,58 @@ namespace Workshop_Gmap
             }
         }
 
-        private void showStatistics_Click(object sender, EventArgs e)
+        public void saveData()
         {
-            MessageBox.Show(model.Affected.Count+"");
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.OpenWrite(direction);
+            bf.Serialize(file, model);
+            file.Close();
         }
+
+        public void read()
+        {
+            if (!File.Exists(direction))
+            {
+                return;
+            }
+            else
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(direction, FileMode.Open);
+                Statistics nModel = (Statistics)bf.Deserialize(file);
+                file.Close();
+                model = nModel;
+            }
+        }
+
+        public void refreshToListView()
+        {
+            AffectedListView.Items.Clear();
+            foreach (Affected affected in model.Affected)
+            {
+                ListViewItem item = new ListViewItem();
+                item = AffectedListView.Items.Add(affected.Year + "");
+                item.SubItems.Add(affected.State);
+                item.SubItems.Add(affected.Gender);
+                item.SubItems.Add(affected.Ocupation);
+                item.SubItems.Add(affected.CivilStatus);
+            }
+        }
+
+        public void markMap()
+        {
+            GMapOverlay markersOverlay = new GMapOverlay("markers");
+            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(4.598077, -74.0761028),
+            GMarkerGoogleType.blue_small);
+            markersOverlay.Markers.Add(marker);
+            map.Overlays.Add(markersOverlay);
+        }
+
+        public void showStatistics_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
     }
 }

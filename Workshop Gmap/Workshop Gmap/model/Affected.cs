@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Workshop_Gmap.model
 {
+    [Serializable]
     public class Affected
     {
         public const String MALE = "Male";
