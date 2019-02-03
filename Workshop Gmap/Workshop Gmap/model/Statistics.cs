@@ -16,9 +16,9 @@ namespace Workshop_Gmap.model
             affected = new List<Affected>();
         }
 
-        public void addAffected(int year, string state, string gender, string ocupation, string civilStatus)
+        public void addAffected(int year, Department department, string gender, string ocupation, string civilStatus)
         {
-            this.affected.Add(new Affected(year, state, gender, ocupation, civilStatus));
+            this.affected.Add(new Affected(year, department, gender, ocupation, civilStatus));
         }
 
         public List<Affected> Affected { get => affected; set => affected = value; }

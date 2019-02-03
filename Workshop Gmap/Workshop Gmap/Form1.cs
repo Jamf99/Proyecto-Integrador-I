@@ -28,8 +28,8 @@ namespace Workshop_Gmap
         {
             InitializeComponent();
             model = new Statistics();
-            // readDataBase();
-            // saveData();
+            //readDataBase();
+            //saveData();
             read();
             refreshToListView();
             markMap();
@@ -61,39 +61,39 @@ namespace Workshop_Gmap
                         string gender = values[14];
                         string ocupation = values[22];
                         string civilStatus = values[16];
-                        string department = "";
+                        Department department = null;
                         int state = Int32.Parse(values[0]);
                         if (state == 17)
                         {
-                            department = "Caldas";
+                            department = new Department("Caldas", 5.3302514, -75.2873471);
                         }
                         else if (state == 76)
                         {
-                            department = "Valle del Cauca";
+                            department = new Department("Valle del Cauca", 4.06397, -76.12338);
                         }
                         else if (state == 63)
                         {
-                            department = "Quindío";
+                            department = new Department("Quindío", 4.3435926, -75.7232898);
                         }
                         else if (state == 66)
                         {
-                            department = "Risaralda";
+                            department = new Department("Quindío", 5.2102948, -75.9842236);
                         }
                         else if (state == 11)
                         {
-                            department = "Bogotá";
+                            department = new Department("Bogotá D.C", 4.5980772, -74.0761028);
                         }
                         else if (state == 25)
                         {
-                            department = "Cundinamarca";
+                            department = new Department("Cundinamarca", 5.0000086, -74.1666756);
                         }
                         else if (state == 5)
                         {
-                            department = "Antioquia";
+                            department = new Department("Antioquia", 7.0000085, -75.5000086);
                         }
                         else if (state == 73)
                         {
-                            department = "Tolima";
+                            department = new Department("Tolima", 3.7500086, -75.2500086);
                         }
                         model.addAffected(year, department, gender, ocupation, civilStatus);
                     }
@@ -139,7 +139,7 @@ namespace Workshop_Gmap
             {
                 ListViewItem item = new ListViewItem();
                 item = AffectedListView.Items.Add(affected.Year + "");
-                item.SubItems.Add(affected.State);
+                item.SubItems.Add(affected.Department.Name);
                 item.SubItems.Add(affected.Gender);
                 item.SubItems.Add(affected.Ocupation);
                 item.SubItems.Add(affected.CivilStatus);
