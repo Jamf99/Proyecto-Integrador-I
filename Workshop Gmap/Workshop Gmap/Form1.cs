@@ -77,7 +77,7 @@ namespace Workshop_Gmap
                         }
                         else if (state == 66)
                         {
-                            department = new Department("Quindío", 5.2102948, -75.9842236);
+                            department = new Department("Risaralda", 5.2102948, -75.9842236);
                         }
                         else if (state == 11)
                         {
@@ -148,7 +148,45 @@ namespace Workshop_Gmap
 
         public void markMap()
         {
-            
+            //int[] positions = new int[7];
+            //foreach (Affected af in model.Affected)
+            //{
+            //    if (af.Department.Name.Equals("Caldas"))
+            //    {
+            //        positions[0]++;
+            //    }
+            //    else if (af.Department.Name.Equals("Valle del Cauca"))
+            //    {
+            //        positions[1]++;
+            //    }
+            //    else if (af.Department.Name.Equals("Quindío"))
+            //    {
+            //        positions[2]++;
+            //    }
+            //    else if (af.Department.Name.Equals("Risaralda"))
+            //    {
+            //        positions[3]++;
+            //    }
+            //    else if (af.Department.Name.Equals("Bogotá D.C"))
+            //    {
+            //        positions[4]++;
+            //    }
+            //    else if (af.Department.Name.Equals("Cundinamarca"))
+            //    {
+            //        positions[5]++;
+            //    }
+            //    else if (af.Department.Name.Equals("Antioquia"))
+            //    {
+            //        positions[6]++;
+            //    }
+            //    else if (af.Department.Name.Equals("Tolima"))
+            //    {
+            //        positions[7]++;
+            //    }
+
+            //}
+
+            //PointLatLng[] pt = new PointLatLng[7];
 
             //GMapOverlay markersOverlay = new GMapOverlay("markers");
             //GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(4.598077, -74.0761028),
