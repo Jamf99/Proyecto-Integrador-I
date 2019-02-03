@@ -148,18 +148,25 @@ namespace Workshop_Gmap
 
         public void markMap()
         {
-            GMapOverlay markersOverlay = new GMapOverlay("markers");
-            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(4.598077, -74.0761028),
-            GMarkerGoogleType.blue_small);
-            markersOverlay.Markers.Add(marker);
-            map.Overlays.Add(markersOverlay);
+            
+
+            //GMapOverlay markersOverlay = new GMapOverlay("markers");
+            //GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(4.598077, -74.0761028),
+            //GMarkerGoogleType.blue_small);
+            //markersOverlay.Markers.Add(marker);
+            //map.Overlays.Add(markersOverlay);
         }
 
         public void showStatistics_Click(object sender, EventArgs e)
         {
-            
+            Stats stats = new Stats();
+            stats.ShowDialog();
+            }
+
+        private void recomendations_Click(object sender, EventArgs e)
+        {
+            Recomendations r = new Recomendations();
+            r.ShowDialog();
         }
-
-
     }
 }

@@ -82,6 +82,8 @@
             // 
             // map
             // 
+            this.map.AutoScroll = true;
+            this.map.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.map.Bearing = 0F;
             this.map.CanDragMap = true;
             this.map.EmptyTileColor = System.Drawing.Color.Navy;
@@ -98,13 +100,14 @@
             this.map.NegativeMode = false;
             this.map.PolygonsEnabled = true;
             this.map.RetryLoadTile = 0;
+            this.map.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.map.RoutesEnabled = true;
             this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.map.ShowTileGridLines = false;
             this.map.Size = new System.Drawing.Size(497, 434);
             this.map.TabIndex = 1;
-            this.map.Zoom = 5.5D;
+            this.map.Zoom = 5D;
             this.map.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // label1
@@ -143,6 +146,7 @@
             this.recomendations.TabIndex = 5;
             this.recomendations.Text = "Recomendations";
             this.recomendations.UseVisualStyleBackColor = true;
+            this.recomendations.Click += new System.EventHandler(this.recomendations_Click);
             // 
             // Principal
             // 
@@ -156,6 +160,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.map);
             this.Controls.Add(this.AffectedListView);
+            this.MaximizeBox = false;
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Integrator Project I - Workshop";

@@ -8,10 +8,7 @@ namespace Workshop_Gmap.model
 {
     [Serializable]
     public class Affected
-    {
-        public const String MALE = "Male";
-        public const String FEMALE = "Female";
-
+    { 
         private int year;
         private String state;
         private String gender;
