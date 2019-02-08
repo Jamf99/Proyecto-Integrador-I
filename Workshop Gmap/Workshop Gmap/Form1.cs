@@ -111,21 +111,21 @@ namespace Workshop_Gmap
         public void saveData()
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.OpenWrite("..\\..\\ejemplo.txt");
+            FileStream file = File.OpenWrite("..\\..\\saved.cfg");
             bf.Serialize(file, model);
             file.Close();
         }
 
         public void read()
         {
-            if (!File.Exists("..\\..\\ejemplo.txt"))
+            if (!File.Exists("..\\..\\saved.cfg"))
             {
                 return;
             }
             else
             {
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open("..\\..\\ejemplo.txt", FileMode.Open);
+                FileStream file = File.Open("..\\..\\saved.cfg", FileMode.Open);
                 Statistics nModel = (Statistics)bf.Deserialize(file);
                 file.Close();
                 model = nModel;
