@@ -28,22 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.butClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // butClose
+            // 
+            this.butClose.Location = new System.Drawing.Point(56, 538);
+            this.butClose.Name = "butClose";
+            this.butClose.Size = new System.Drawing.Size(182, 23);
+            this.butClose.TabIndex = 0;
+            this.butClose.Text = "Close";
+            this.butClose.UseVisualStyleBackColor = true;
+            this.butClose.Click += new System.EventHandler(this.butClose_Click);
             // 
             // Recomendations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 525);
+            this.BackgroundImage = global::Workshop_Gmap.Properties.Resources.sida;
+            this.ClientSize = new System.Drawing.Size(836, 601);
+            this.Controls.Add(this.butClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Recomendations";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recomendations";
+            this.Load += new System.EventHandler(this.Recomendations_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button butClose;
     }
 }

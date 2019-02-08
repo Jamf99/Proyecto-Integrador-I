@@ -16,5 +16,15 @@ namespace Workshop_Gmap
         {
             InitializeComponent();
         }
+
+        private void butClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Recomendations_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace Workshop_Gmap
     public partial class Principal : Form
     {
 
-        private string direction = Environment.CurrentDirectory + @"..\\..\\saved.cfg";
+        //private string direction = Environment.CurrentDirectory + @"..\\..\\saved.cfg";
 
         private Statistics model;
 
@@ -111,21 +111,21 @@ namespace Workshop_Gmap
         public void saveData()
         {
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.OpenWrite(direction);
+            FileStream file = File.OpenWrite("..\\..\\ejemplo.txt");
             bf.Serialize(file, model);
             file.Close();
         }
 
         public void read()
         {
-            if (!File.Exists(direction))
+            if (!File.Exists("..\\..\\ejemplo.txt"))
             {
                 return;
             }
             else
             {
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(direction, FileMode.Open);
+                FileStream file = File.Open("..\\..\\ejemplo.txt", FileMode.Open);
                 Statistics nModel = (Statistics)bf.Deserialize(file);
                 file.Close();
                 model = nModel;
@@ -148,58 +148,60 @@ namespace Workshop_Gmap
 
         public void markMap()
         {
-            //int[] positions = new int[7];
-            //foreach (Affected af in model.Affected)
-            //{
-            //    if (af.Department.Name.Equals("Caldas"))
-            //    {
-            //        positions[0]++;
-            //    }
-            //    else if (af.Department.Name.Equals("Valle del Cauca"))
-            //    {
-            //        positions[1]++;
-            //    }
-            //    else if (af.Department.Name.Equals("Quindío"))
-            //    {
-            //        positions[2]++;
-            //    }
-            //    else if (af.Department.Name.Equals("Risaralda"))
-            //    {
-            //        positions[3]++;
-            //    }
-            //    else if (af.Department.Name.Equals("Bogotá D.C"))
-            //    {
-            //        positions[4]++;
-            //    }
-            //    else if (af.Department.Name.Equals("Cundinamarca"))
-            //    {
-            //        positions[5]++;
-            //    }
-            //    else if (af.Department.Name.Equals("Antioquia"))
-            //    {
-            //        positions[6]++;
-            //    }
-            //    else if (af.Department.Name.Equals("Tolima"))
-            //    {
-            //        positions[7]++;
-            //    }
+            PointLatLng point1 = new PointLatLng(5.3302514, -75.2873471);
+            GMapMarker mark1 = new GMarkerGoogle(point1, GMarkerGoogleType.red_dot);
+            GMapOverlay marker1 = new GMapOverlay("marker");
+            marker1.Markers.Add(mark1);
+            map.Overlays.Add(marker1);
 
-            //}
+            PointLatLng point2 = new PointLatLng(4.06397, -76.12338);
+            GMapMarker mark2 = new GMarkerGoogle(point2, GMarkerGoogleType.orange_small);
+            GMapOverlay marker2 = new GMapOverlay("marker");
+            marker2.Markers.Add(mark2);
+            map.Overlays.Add(marker2);
 
-            //PointLatLng[] pt = new PointLatLng[7];
+            PointLatLng point3 = new PointLatLng(4.3435926, -75.7232898);
+            GMapMarker mark3 = new GMarkerGoogle(point3, GMarkerGoogleType.blue_small);
+            GMapOverlay marker3 = new GMapOverlay("marker");
+            marker3.Markers.Add(mark3);
+            map.Overlays.Add(marker3);
 
-            //GMapOverlay markersOverlay = new GMapOverlay("markers");
-            //GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(4.598077, -74.0761028),
-            //GMarkerGoogleType.blue_small);
-            //markersOverlay.Markers.Add(marker);
-            //map.Overlays.Add(markersOverlay);
+            PointLatLng point4 = new PointLatLng(5.2102948, -75.9842236);
+            GMapMarker mark4 = new GMarkerGoogle(point4, GMarkerGoogleType.yellow_small);
+            GMapOverlay marker4 = new GMapOverlay("marker");
+            marker4.Markers.Add(mark4);
+            map.Overlays.Add(marker4);
+
+            PointLatLng point5 = new PointLatLng(4.5980772, -74.0761028);
+            GMapMarker mark5 = new GMarkerGoogle(point5, GMarkerGoogleType.purple_small);
+            GMapOverlay marker5 = new GMapOverlay("marker");
+            marker5.Markers.Add(mark5);
+            map.Overlays.Add(marker5);
+
+            PointLatLng point6 = new PointLatLng(5.0000086, -74.1666756);
+            GMapMarker mark6 = new GMarkerGoogle(point6, GMarkerGoogleType.green_small);
+            GMapOverlay marker6 = new GMapOverlay("marker");
+            marker6.Markers.Add(mark6);
+            map.Overlays.Add(marker6);
+
+            PointLatLng point7 = new PointLatLng(7.0000085, -75.5000086);
+            GMapMarker mark7 = new GMarkerGoogle(point7, GMarkerGoogleType.gray_small);
+            GMapOverlay marker7 = new GMapOverlay("marker");
+            marker7.Markers.Add(mark7);
+            map.Overlays.Add(marker7);
+
+            PointLatLng point8 = new PointLatLng(3.7500086, -75.2500086);
+            GMapMarker mark8 = new GMarkerGoogle(point8, GMarkerGoogleType.white_small);
+            GMapOverlay marker8 = new GMapOverlay("marker");
+            marker8.Markers.Add(mark8);
+            map.Overlays.Add(marker8);
         }
 
         public void showStatistics_Click(object sender, EventArgs e)
         {
             Stats stats = new Stats();
             stats.ShowDialog();
-            }
+        }
 
         private void recomendations_Click(object sender, EventArgs e)
         {
