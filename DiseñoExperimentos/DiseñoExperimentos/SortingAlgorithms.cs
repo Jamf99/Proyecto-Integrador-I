@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DiseñoExperimentos
 {
-    class Program
+    public class SortingAlgorithms
     {
-        static void heapSort(int[] arr, int n)
+        public void heapSort(int[] arr, int n)
         {
             for (int i = n / 2 - 1; i >= 0; i--)
                 heapify(arr, n, i);
@@ -94,7 +94,7 @@ namespace DiseñoExperimentos
             }
         }
 
-        public static void timSort(int[] arr, int n)
+        public void timSort(int[] arr, int n)
         {
             for (int i = 0; i < n; i += RUN)
                 insertionSort(arr, i, Math.Min((i + 31), (n - 1)));
