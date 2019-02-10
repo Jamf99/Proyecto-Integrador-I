@@ -113,21 +113,23 @@ namespace DiseñoExperimentos
 
         static void Main(string[] args)
         {
-            //leer(1);
-            //heapSort(datos, 10000);
-            //for(int i = 0; i < datos.Length; i++)
-            //{
-            //    Console.Write(datos[i] + " ");
-            //}
+            //leerEsperado(0);
+            leer(2);
+            heapSort(datos, 1000000);
+            //Array.Reverse(esperado);
+            for(int i = 0; i < datos.Length; i++)
+            {
+                Console.Write(datos[i] + " ");
+            }
         }
 
-        private int[] datos;
-        private int[] esperado;
+        private static int[] datos;
+        private static int[] esperado;
 
         public int[] Datos { get => datos; set => datos = value; }
         public int[] Esperado { get => esperado; set => esperado = value; }
 
-        public void leer(int tipo)
+        public static void leer(int tipo)
         {
             String line;
             try
@@ -145,12 +147,12 @@ namespace DiseñoExperimentos
                 }
                 else if (tipo == 2)
                 {
-                    datos = new int[100000];
-                    sr = new StreamReader("..\\..\\datosGrandeDesordenados.txt");
+                    datos = new int[1000000];
+                    sr = new StreamReader("..\\..\\datosGrandesDesordenados.txt");
                 }
                 else if (tipo == 3)
                 {
-                    datos = new int[100000];
+                    datos = new int[1000000];
                     sr = new StreamReader("..\\..\\datosGrandesInverso.txt");
                 }
                 int c = 0;
@@ -176,7 +178,7 @@ namespace DiseñoExperimentos
             }
         }
 
-        public void leerEsperado(int tipoEsperado)
+        public static void leerEsperado(int tipoEsperado)
         {
             String line;
             try
@@ -184,12 +186,12 @@ namespace DiseñoExperimentos
                 StreamReader sr = null;
                 if (tipoEsperado == 0)
                 {
-                    datos = new int[10000];
-                    sr = new StreamReader("..\\..\\datosGrandesOrdenados.txt");
+                    esperado = new int[10000];
+                    sr = new StreamReader("..\\..\\datosMedianosOrdenados.txt");
                 }
                 else if (tipoEsperado == 1)
                 {
-                    datos = new int[100000];
+                    esperado = new int[1000000];
                     sr = new StreamReader("..\\..\\datosGrandesOrdenados.txt");
                 }
 
