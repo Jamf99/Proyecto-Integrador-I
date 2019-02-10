@@ -38,7 +38,7 @@ namespace DiseñoExperimentos
             }
         }
         
-        public const int RUN = 32;
+        public const int RUN =32;
         public static void insertionSort(int[] arr, int left, int right)
         {
             for (int i = left + 1; i <= right; i++)
