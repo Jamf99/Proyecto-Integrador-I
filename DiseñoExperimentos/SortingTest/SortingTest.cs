@@ -47,5 +47,13 @@ namespace SortingTest
             CollectionAssert.AreEqual(numerosPequeñosInverso, esperado);
         }
 
+        [TestMethod]
+        public void TestHeapSort3()
+        {
+            escenarioUno();
+            algorithms.heapSort(esperado, 100);
+            CollectionAssert.AreEqual(esperado, esperado);
+        }
+
     }
 }
