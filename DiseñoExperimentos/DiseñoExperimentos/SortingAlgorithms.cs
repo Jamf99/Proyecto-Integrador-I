@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DiseñoExperimentos
 {
     public class SortingAlgorithms
     {
-        public void heapSort(int[] arr, int n)
+        public static void heapSort(int[] arr, int n)
         {
             for (int i = n / 2 - 1; i >= 0; i--)
                 heapify(arr, n, i);
@@ -111,7 +113,107 @@ namespace DiseñoExperimentos
 
         static void Main(string[] args)
         {
+            //leer(1);
+            //heapSort(datos, 10000);
+            //for(int i = 0; i < datos.Length; i++)
+            //{
+            //    Console.Write(datos[i] + " ");
+            //}
+        }
 
+        private int[] datos;
+        private int[] esperado;
+
+        public int[] Datos { get => datos; set => datos = value; }
+        public int[] Esperado { get => esperado; set => esperado = value; }
+
+        public void leer(int tipo)
+        {
+            String line;
+            try
+            {
+                StreamReader sr = null;
+                if(tipo == 0)
+                {
+                    datos = new int[10000];
+                    sr = new StreamReader("..\\..\\datosMedianosDesordenados.txt");
+                }
+                else if (tipo == 1)
+                {
+                    datos = new int[10000];
+                    sr = new StreamReader("..\\..\\datosMedianosInverso.txt");
+                }
+                else if (tipo == 2)
+                {
+                    datos = new int[100000];
+                    sr = new StreamReader("..\\..\\datosGrandeDesordenados.txt");
+                }
+                else if (tipo == 3)
+                {
+                    datos = new int[100000];
+                    sr = new StreamReader("..\\..\\datosGrandesInverso.txt");
+                }
+                int c = 0;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] lines = line.Split(' ');
+                    int r = 0;
+                    while(c < lines.Length)
+                    {
+                        datos[c] = Int32.Parse(lines[r]);
+                        r++;
+                        c++;
+                    }
+                }
+
+                sr.Close();
+                //Console.ReadLine();
+                Thread.Sleep(4000);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+        }
+
+        public void leerEsperado(int tipoEsperado)
+        {
+            String line;
+            try
+            {
+                StreamReader sr = null;
+                if (tipoEsperado == 0)
+                {
+                    datos = new int[10000];
+                    sr = new StreamReader("..\\..\\datosGrandesOrdenados.txt");
+                }
+                else if (tipoEsperado == 1)
+                {
+                    datos = new int[100000];
+                    sr = new StreamReader("..\\..\\datosGrandesOrdenados.txt");
+                }
+
+                int c = 0;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] lines = line.Split(' ');
+                    int r = 0;
+                    while (c < lines.Length)
+                    {
+                        esperado[c] = Int32.Parse(lines[r]);
+                        r++;
+                        c++;
+                    }
+                }
+
+                sr.Close();
+                //Console.ReadLine();
+                Thread.Sleep(4000);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
         }
     }
 }
