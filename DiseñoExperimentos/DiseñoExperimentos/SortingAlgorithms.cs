@@ -39,88 +39,154 @@ namespace DiseñoExperimentos
                 heapify(arr, n, largest);
             }
         }
-        
-        public const int RUN =32;
-        public static void insertionSort(int[] arr, int left, int right)
+
+        public void IntroSort(int[] data)
         {
-            for (int i = left + 1; i <= right; i++)
+            int partitionSize = Partition(ref data, 0, data.Length - 1);
+
+            if (partitionSize < 16)
             {
-                int temp = arr[i];
-                int j = i - 1;
-                while (arr[j] > temp && j >= left)
-                {
-                    arr[j + 1] = arr[j];
-                    j--;
-                }
-                arr[j + 1] = temp;
+                InsertionSort(ref data);
+            }
+            else if (partitionSize > (2 * Math.Log(data.Length)))
+            {
+                HeapSort(ref data);
+            }
+            else
+            {
+                QuickSortRecursive(ref data, 0, data.Length - 1);
             }
         }
 
-        public static void merge(int[] arr, int l, int m, int r)
+        private static void InsertionSort(ref int[] data)
         {
-            int len1 = m - l + 1, len2 = r - m;
-            int[] left = new int[len1];
-            int[] right = new int[len2];
-            for (int x = 0; x < len1; x++)
-                left[x] = arr[l + x];
-            for (int x = 0; x < len2; x++)
-                right[x] = arr[m + 1 + x];
-            int i = 0;
-            int j = 0;
-            int k = l;
-            while (i < len1 && j < len2)
+            for (int i = 1; i < data.Length; ++i)
             {
-                if (left[i] <= right[j])
+                int j = i;
+
+                while ((j > 0))
                 {
-                    arr[k] = left[i];
+                    if (data[j - 1] > data[j])
+                    {
+                        data[j - 1] ^= data[j];
+                        data[j] ^= data[j - 1];
+                        data[j - 1] ^= data[j];
+
+                        --j;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        private static void HeapSort(ref int[] data)
+        {
+            int heapSize = data.Length;
+
+            for (int p = (heapSize - 1) / 2; p >= 0; --p)
+                MaxHeapify(ref data, heapSize, p);
+
+            for (int i = data.Length - 1; i > 0; --i)
+            {
+                int temp = data[i];
+                data[i] = data[0];
+                data[0] = temp;
+
+                --heapSize;
+                MaxHeapify(ref data, heapSize, 0);
+            }
+        }
+
+        private static void MaxHeapify(ref int[] data, int heapSize, int index)
+        {
+            int left = (index + 1) * 2 - 1;
+            int right = (index + 1) * 2;
+            int largest = 0;
+
+            if (left < heapSize && data[left] > data[index])
+                largest = left;
+            else
+                largest = index;
+
+            if (right < heapSize && data[right] > data[largest])
+                largest = right;
+
+            if (largest != index)
+            {
+                int temp = data[index];
+                data[index] = data[largest];
+                data[largest] = temp;
+
+                MaxHeapify(ref data, heapSize, largest);
+            }
+        }
+
+        private static void QuickSortRecursive(ref int[] data, int left, int right)
+        {
+            if (left < right)
+            {
+                int q = Partition(ref data, left, right);
+                QuickSortRecursive(ref data, left, q - 1);
+                QuickSortRecursive(ref data, q + 1, right);
+            }
+        }
+
+        private static int Partition(ref int[] data, int left, int right)
+        {
+            int pivot = data[right];
+            int temp;
+            int i = left;
+
+            for (int j = left; j < right; ++j)
+            {
+                if (data[j] <= pivot)
+                {
+                    temp = data[j];
+                    data[j] = data[i];
+                    data[i] = temp;
                     i++;
                 }
-                else
-                {
-                    arr[k] = right[j];
-                    j++;
-                }
-                k++;
             }
-            while (i < len1)
-            {
-                arr[k] = left[i];
-                k++;
-                i++;
-            }
-            while (j < len2)
-            {
-                arr[k] = right[j];
-                k++;
-                j++;
-            }
+
+            data[right] = data[i];
+            data[i] = pivot;
+
+            return i;
         }
 
-        public void timSort(int[] arr, int n)
-        {
-            for (int i = 0; i < n; i += RUN)
-                insertionSort(arr, i, Math.Min((i + 31), (n - 1)));
-            for (int size = RUN; size < n; size = 2 * size)
-            {
-                for (int left = 0; left < n; left += 2 * size)
-                {
-                    int mid = left + size - 1;
-                    int right = Math.Min((left + 2 * size - 1), (n - 1));
-                    merge(arr, left, mid, right);
-                }
-            }
-        }
 
         static void Main(string[] args)
         {
-            //leerEsperado(0);
-            leer(2);
-            heapSort(datos, 1000000);
-            //Array.Reverse(esperado);
-            for(int i = 0; i < datos.Length; i++)
+            leerEsperado(1);
+            //heapSort(datos, 1000000);
+            //leerEsperado(1);
+            try
             {
-                Console.Write(datos[i] + " ");
+
+                StreamWriter sw = new StreamWriter("..\\..\\prueba.txt");
+                for (int i = 0; i < esperado.Length; i++)
+                {
+                    sw.Write(esperado[i] + " ");
+                }
+
+                /*sw.WriteLine("==============================================\n");
+
+                for (int i = 0; i < esperado.Length; i++)
+                {
+                    sw.Write(esperado[i] + " ");
+                }
+
+                sw.Close();
+                */
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            
         }
 
         private static int[] datos;
@@ -135,7 +201,7 @@ namespace DiseñoExperimentos
             try
             {
                 StreamReader sr = null;
-                if(tipo == 0)
+                if (tipo == 0)
                 {
                     datos = new int[10000];
                     sr = new StreamReader("..\\..\\datosMedianosDesordenados.txt");
@@ -155,19 +221,41 @@ namespace DiseñoExperimentos
                     datos = new int[1000000];
                     sr = new StreamReader("..\\..\\datosGrandesInverso.txt");
                 }
-                int c = 0;
-                while ((line = sr.ReadLine()) != null)
+
+                if (tipo == 0 || tipo == 1)
                 {
-                    string[] lines = line.Split(' ');
-                    int r = 0;
-                    while(c < lines.Length)
+                    int c = 0;
+                    int j = 0;
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        datos[c] = Int32.Parse(lines[r]);
-                        r++;
-                        c++;
+                        j = 0;
+                        string[] lines = line.Split(' ');
+                        int r = 0;
+                        while (j < lines.Length)
+                        {
+                            datos[c] = Int32.Parse(lines[r]);
+                            r++;
+                            c++;
+                            j++;
+                        }
                     }
                 }
-
+                else if (tipo == 2 || tipo == 3)
+                {
+                    int c = 0;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] lines = line.Split(' ');
+                        for(int i = 0; i < lines.Length; i++)
+                        {
+                            datos[i] = Int32.Parse(lines[i]);
+                            c++;
+                        }
+                       
+                    }
+                    Console.WriteLine(datos.Length);
+                }
+               
                 sr.Close();
                 //Console.ReadLine();
                 Thread.Sleep(4000);
@@ -188,24 +276,45 @@ namespace DiseñoExperimentos
                 {
                     esperado = new int[10000];
                     sr = new StreamReader("..\\..\\datosMedianosOrdenados.txt");
+                    int c = 0;
+                    int j = 0;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        j = 0;
+                        string[] lines = line.Split(' ');
+                        int r = 0;
+                        while (j < lines.Length)
+                        {
+                            esperado[c] = Int32.Parse(lines[r]);
+                            r++;
+                            c++;
+                            j++;
+                        }
+                    }
                 }
                 else if (tipoEsperado == 1)
                 {
                     esperado = new int[1000000];
                     sr = new StreamReader("..\\..\\datosGrandesOrdenados.txt");
-                }
-
-                int c = 0;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    string[] lines = line.Split(' ');
-                    int r = 0;
-                    while (c < lines.Length)
+                    int errores = 0;
+                    int c = 0;
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        esperado[c] = Int32.Parse(lines[r]);
-                        r++;
-                        c++;
+                        string[] lines = line.Split(' ');
+                        for (int i = 0; i < lines.Length; i++)
+                        {
+                            if (Int32.TryParse(lines[i], out c))
+                            {
+                                esperado[i] = Int32.Parse(lines[i]);
+                                c++;
+                            }
+                            else
+                            {
+                                errores++;
+                            }
+                        }
                     }
+                    Console.WriteLine(errores);
                 }
 
                 sr.Close();

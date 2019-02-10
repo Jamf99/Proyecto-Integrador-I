@@ -58,6 +58,15 @@ namespace SortingTest
             estimado = algorithms.Esperado;
         }
 
+        public void escenarioCinco()
+        {
+            algorithms = new SortingAlgorithms();
+            algorithms.leer(2);
+            algorithms.leerEsperado(1);
+            numeros = algorithms.Datos;
+            estimado = algorithms.Esperado;
+        }
+
         [TestMethod]
         public void TestHeapSortPequeñosDesordenados()
         {
@@ -101,33 +110,124 @@ namespace SortingTest
         [TestMethod]
         public void TestHeapSortMedianosYaOrdenados()
         {
-            escenarioTres();
+            escenarioCuatro();
             algorithms.heapSort(estimado, 10000);
             CollectionAssert.AreEqual(estimado, estimado);
         }
 
-        [TestMethod]
+       [TestMethod]
         public void TestHeapSortGrandesDesordenados()
         {
-            escenarioTres();
-            algorithms.heapSort(estimado, 10000);
-            CollectionAssert.AreEqual(estimado, estimado);
+            escenarioCinco();
+            algorithms.heapSort(numeros, 1000000);
+            CollectionAssert.AreEqual(numeros, estimado);
         }
-
-        [TestMethod]
-        public void TestHeapSortGrandesInverso()
+        /*
+        //[TestMethod]
+        //public void TestHeapSortGrandesInverso()
+        //{
+        //    escenarioTres();
+        //    algorithms.heapSort(estimado, 10000);
+        //    CollectionAssert.AreEqual(estimado, estimado);
+        //}
+        */
+        
+        public void escenarioSeis()
         {
-            escenarioTres();
-            algorithms.heapSort(estimado, 10000);
-            CollectionAssert.AreEqual(estimado, estimado);
+            algorithms = new SortingAlgorithms();
+            algorithms.leerEsperado(1);
+            estimado = algorithms.Esperado;
         }
-
+        
         [TestMethod]
         public void TestHeapSortGrandesYaOrdenados()
         {
-            escenarioTres();
-            algorithms.heapSort(estimado, 10000);
+            escenarioSeis();
+            algorithms.heapSort(estimado, 1000000);
             CollectionAssert.AreEqual(estimado, estimado);
         }
+
+        [TestMethod]
+        public void TestIntroSortPequeñosDesordenados()
+        {
+            escenarioUno();
+            algorithms.IntroSort(numerosPequeñosDesordenados);
+            CollectionAssert.AreEqual(numerosPequeñosDesordenados, esperado);
+        }
+
+        [TestMethod]
+        public void TestIntroSortPequeñosInverso()
+        {
+            escenarioUno();
+            algorithms.IntroSort(numerosPequeñosInverso);
+            CollectionAssert.AreEqual(numerosPequeñosInverso, esperado);
+        }
+
+        [TestMethod]
+        public void TestIntroSortPequeñosYaOrdenados()
+        {
+            escenarioUno();
+            algorithms.IntroSort(esperado);
+            CollectionAssert.AreEqual(esperado, esperado);
+        }
+
+        [TestMethod]
+        public void TestIntroSortMedianosDesordenados()
+        {
+            escenarioDos();
+            algorithms.IntroSort(numeros);
+            CollectionAssert.AreEqual(numeros, estimado);
+        }
+
+        [TestMethod]
+        public void TestIntroSortMedianosInverso()
+        {
+            escenarioTres();
+            algorithms.IntroSort(numeros);
+            CollectionAssert.AreEqual(numeros, estimado);
+        }
+
+        [TestMethod]
+        public void TestIntroSortMedianosYaOrdenados()
+        {
+            escenarioCuatro();
+            algorithms.IntroSort(estimado);
+            CollectionAssert.AreEqual(estimado, estimado);
+        }
+
+        [TestMethod]
+        public void TestIntroSortGrandesYaOrdenados()
+        {
+            escenarioSeis();
+            algorithms.IntroSort(estimado);
+            CollectionAssert.AreEqual(estimado, estimado);
+        }
+
+        [TestMethod]
+        public void TestIntroSortGrandesDesordenados()
+        {
+            escenarioCinco();
+            algorithms.IntroSort(numeros);
+            CollectionAssert.AreEqual(numeros, estimado);
+        }
+
+        public void escenarioOcho()
+        {
+            algorithms = new SortingAlgorithms();
+            algorithms.leerEsperado(1);
+            algorithms.leer(3);
+            estimado = algorithms.Esperado;
+            numeros = algorithms.Datos;
+        }
+/*
+        [TestMethod]
+        public void TestIntroSortGrandesInverso()
+        {
+            escenarioOcho();
+            algorithms.IntroSort(numeros);
+            CollectionAssert.AreEqual(numeros, estimado);
+        }
+        */
+
     }
 }
