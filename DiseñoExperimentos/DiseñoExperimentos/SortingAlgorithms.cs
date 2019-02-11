@@ -10,7 +10,7 @@ namespace DiseñoExperimentos
 {
     public class SortingAlgorithms
     {
-        public static void heapSort(int[] arr, int n)
+        public void heapSort(int[] arr, int n)
         {
             for (int i = n / 2 - 1; i >= 0; i--)
                 heapify(arr, n, i);
@@ -160,42 +160,31 @@ namespace DiseñoExperimentos
 
         static void Main(string[] args)
         {
-            leerEsperado(1);
-            //heapSort(datos, 1000000);
-            //leerEsperado(1);
-            try
-            {
-
-                StreamWriter sw = new StreamWriter("..\\..\\prueba.txt");
-                for (int i = 0; i < esperado.Length; i++)
-                {
-                    sw.Write(esperado[i] + " ");
-                }
-
-                /*sw.WriteLine("==============================================\n");
-
-                for (int i = 0; i < esperado.Length; i++)
-                {
-                    sw.Write(esperado[i] + " ");
-                }
-
-                sw.Close();
-                */
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception: " + e.Message);
-            }
+            //leer(3);
+            //leerEsperado(1); 
+            //Trim
+            //try
+            //{
             
+            //    StreamWriter sr = new StreamWriter("..\\..\\pruebaInverso.txt");
+            //    for(int i = 0; i < esperado.Length; i++)
+            //    {
+            //        sr.Write(esperado[i] + " ");
+            //    }
+               
+            //}catch(Exception e) 
+            //    {
+            //        Console.WriteLine(e);
+            //    } 
         }
 
-        private static int[] datos;
-        private static int[] esperado;
+        private int[] datos;
+        private int[] esperado;
 
         public int[] Datos { get => datos; set => datos = value; }
         public int[] Esperado { get => esperado; set => esperado = value; }
 
-        public static void leer(int tipo)
+        public void leer(int tipo)
         {
             String line;
             try
@@ -246,18 +235,16 @@ namespace DiseñoExperimentos
                     while ((line = sr.ReadLine()) != null)
                     {
                         string[] lines = line.Split(' ');
-                        for(int i = 0; i < lines.Length; i++)
+                        for (int i = 0; i < lines.Length; i++)
                         {
-                            datos[i] = Int32.Parse(lines[i]);
+                             datos[i] = Int32.Parse(lines[i]);
                             c++;
                         }
-                       
                     }
-                    Console.WriteLine(datos.Length);
+                    Console.WriteLine(c);
                 }
                
                 sr.Close();
-                //Console.ReadLine();
                 Thread.Sleep(4000);
             }
             catch (Exception e)
@@ -266,7 +253,7 @@ namespace DiseñoExperimentos
             }
         }
 
-        public static void leerEsperado(int tipoEsperado)
+        public void leerEsperado(int tipoEsperado)
         {
             String line;
             try
@@ -314,7 +301,6 @@ namespace DiseñoExperimentos
                             }
                         }
                     }
-                    Console.WriteLine(errores);
                 }
 
                 sr.Close();

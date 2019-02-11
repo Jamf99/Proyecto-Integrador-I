@@ -122,15 +122,15 @@ namespace SortingTest
             algorithms.heapSort(numeros, 1000000);
             CollectionAssert.AreEqual(numeros, estimado);
         }
-        /*
-        //[TestMethod]
-        //public void TestHeapSortGrandesInverso()
-        //{
-        //    escenarioTres();
-        //    algorithms.heapSort(estimado, 10000);
-        //    CollectionAssert.AreEqual(estimado, estimado);
-        //}
-        */
+        
+        [TestMethod]
+        public void TestHeapSortGrandesInverso()
+        {
+            escenarioOcho();
+            algorithms.heapSort(numeros, 1000000);
+            CollectionAssert.AreEqual(numeros, estimado);
+        }
+        
         
         public void escenarioSeis()
         {
@@ -203,13 +203,13 @@ namespace SortingTest
             CollectionAssert.AreEqual(estimado, estimado);
         }
 
-        [TestMethod]
-        public void TestIntroSortGrandesDesordenados()
-        {
-            escenarioCinco();
-            algorithms.IntroSort(numeros);
-            CollectionAssert.AreEqual(numeros, estimado);
-        }
+        //[TestMethod]
+        //public void TestIntroSortGrandesDesordenados()
+        //{
+        //    escenarioCinco();
+        //    algorithms.IntroSort(numeros);
+        //    CollectionAssert.AreEqual(numeros, estimado);
+        //}
 
         public void escenarioOcho()
         {
@@ -219,7 +219,7 @@ namespace SortingTest
             estimado = algorithms.Esperado;
             numeros = algorithms.Datos;
         }
-/*
+
         [TestMethod]
         public void TestIntroSortGrandesInverso()
         {
@@ -227,7 +227,7 @@ namespace SortingTest
             algorithms.IntroSort(numeros);
             CollectionAssert.AreEqual(numeros, estimado);
         }
-        */
+        
 
     }
 }
