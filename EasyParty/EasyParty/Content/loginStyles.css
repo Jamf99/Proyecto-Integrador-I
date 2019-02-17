@@ -1,0 +1,26 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:600|Oxygen');
+
+body {
+    background-image: url("party.jpg");
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size : 60px;
+}
+
+button {
+    width: 100px;
+    text-decoration: none;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #1f2021;
+    border-radius: 3px;
+    border: 1px solid #1f2021;
+}
