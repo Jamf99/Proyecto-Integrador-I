@@ -8,7 +8,7 @@ namespace EasyParty.Models
     public class Party
     {
         public const string MARRIAGE = "Marriage";
-        public const string BAPTISM = "BAPTISM";
+        public const string BAPTISM = "Baptism";
         public const string FIRST_COMMUNION = "Fist Communion";
         public const string BIRTHDAY = "Birthday";
         public const string DEGREE = "Degree";

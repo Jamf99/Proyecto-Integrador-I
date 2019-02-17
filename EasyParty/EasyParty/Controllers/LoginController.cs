@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyParty.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,18 @@ namespace EasyParty.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            return View();
+        }
+
+        public ActionResult Create()
+        {
+            string needs = "";
+            string eventType = "";
+            string place = "";
+            string date = "";
+            int numberInvites = 0;
+            string description = "";
+            Party party = new Party(needs, eventType, place, date, numberInvites, description);
             return View();
         }
     }

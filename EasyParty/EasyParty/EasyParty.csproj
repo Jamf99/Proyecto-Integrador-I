@@ -90,6 +90,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\form.css" />
+    <Content Include="Content\icon.ico" />
     <Content Include="Content\loginStyles.css" />
     <Content Include="Content\party.jpg" />
     <Content Include="Content\Site.css" />
@@ -102,6 +104,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Login\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
