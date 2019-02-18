@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Easy Party! - Index";
+    ViewBag.Title = "Easy Party!";
 }
 <html>
 <head>
@@ -13,7 +13,9 @@
             <h1>It's time to celebrate</h1>
             <h2>Quote with us and receive the best offers!</h2>
             <br />
-            <button name="send" type="submit"><span><i class="fas fa-sign-in-alt"></i></span></button>
+            <form action="Login/Create" method="post">
+                <button name="send" type="submit"><span><i class="fas fa-sign-in-alt"></i></span></button>
+            </form>
         </div>
     </body>
     

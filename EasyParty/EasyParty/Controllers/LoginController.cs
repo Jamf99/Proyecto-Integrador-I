@@ -17,13 +17,6 @@ namespace EasyParty.Controllers
 
         public ActionResult Create()
         {
-            string needs = "";
-            string eventType = "";
-            string place = "";
-            string date = "";
-            int numberInvites = 0;
-            string description = "";
-            Party party = new Party(needs, eventType, place, date, numberInvites, description);
             return View();
         }
     }
