@@ -19,5 +19,10 @@ namespace EasyParty.Controllers
         {
             return View();
         }
+
+        public ActionResult Requests()
+        {
+            return View();
+        }
     }
 }

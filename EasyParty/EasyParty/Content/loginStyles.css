@@ -26,6 +26,6 @@ button {
     border: 1px solid #1f2021;
 }
 
-button:hover {
+#button:hover {
     background: #373738;
 }
