@@ -1,8 +1,16 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+﻿@import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:600|Oxygen');
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url("banner.jpg");
+    background-size: 100vw 100vh;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    margin: 20px;
 }
 
 /* Wrapping element */

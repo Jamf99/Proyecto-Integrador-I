@@ -7,25 +7,29 @@ body {
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;
     color: #fff;
-    text-align: center;
 }
 
-form {
+#form {
     width: 450px;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 10px 20px;
     box-sizing: border-box;
     margin-top: 20px;
-    border-radius: 7px;
+    border-radius: 7px
 }
 
-h1 {
+h2 {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 30px;
-    margin: 0;
+    color: #1f2021;
     margin-bottom: 20px;
-    text-align: center;
+}
+
+h4 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #1f2021;
+    margin-bottom: 20px;
 }
 
 textarea {
@@ -50,18 +54,18 @@ input, textarea, select {
     border: none;
 }
 
-#button {
+.button {
     color: #fff;
     background: #1f2021;
     padding: 10px;
 }
 
-    #button:hover {
+    .button:hover {
         background: #373738;
     }
 
 @media (max-width: 480px) {
-    form {
+    .form {
         width: 100%;
     }
 }
