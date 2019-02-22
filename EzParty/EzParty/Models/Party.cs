@@ -9,6 +9,8 @@ namespace EzParty.Models
     public class Party
     {
 
+        public int Id { get; set; }
+
         public string Needs { get; set; }
 
         public string EventType { get; set; }
