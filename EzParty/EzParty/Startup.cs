@@ -56,7 +56,7 @@ namespace EzParty
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Party}/{action=Index}/{id?}");
             });
         }
     }
