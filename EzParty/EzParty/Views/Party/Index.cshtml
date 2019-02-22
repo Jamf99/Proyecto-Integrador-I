@@ -1,7 +1,25 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "EzParty!";
 }
 
-<h2>Index</h2>
+<html>
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/banner.css" />
+</head>
+<body>
+    <div>
+        <h1>It's time to celebrate</h1>
+        <h2>Quote with us and receive the best offers!</h2>
+        <br />
+        <form action="/Login/Create" method="post">
+            <button name="send" id="button" type="submit"><span><i class="fas fa-sign-in-alt"></i></span></button>
+        </form>
+    </div>
+</body>
+
+</html>
+
 
